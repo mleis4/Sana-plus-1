@@ -1,0 +1,55 @@
+# ============================================================
+# Sana-plus-1 — Dependency Reference
+# ============================================================
+# This is a Node.js / npm project. Install dependencies with:
+#   npm install
+#
+# The canonical dependency list lives in package.json.
+# This file documents each dependency and its purpose.
+# ============================================================
+
+
+# ── Runtime dependencies ─────────────────────────────────────
+
+react                        # UI framework for popup, side panel, and tooltip components
+react-dom                    # React DOM renderer
+
+idb                          # Lightweight typed IndexedDB wrapper (phrase bank + dictionary cache)
+libvoikko                    # Finnish morphological analyzer — ships with WASM binary + dictionary pre-bundled
+
+
+# ── Build / Dev dependencies ─────────────────────────────────
+
+vite                         # Build tool and dev server
+@crxjs/vite-plugin           # Vite plugin for Chrome MV3 extension output (manifest handling, HMR)
+@vitejs/plugin-react         # Vite React plugin (JSX transform, Fast Refresh)
+
+typescript                   # TypeScript compiler
+@types/react                 # TypeScript types for React
+@types/react-dom             # TypeScript types for React DOM
+@types/chrome                # TypeScript types for Chrome Extension APIs
+
+tailwindcss                  # Utility-first CSS framework
+autoprefixer                 # PostCSS plugin to add vendor prefixes (required by Tailwind)
+postcss                      # CSS transformation tool (Tailwind pipeline)
+
+
+# ── Testing ───────────────────────────────────────────────────
+
+vitest                       # Unit test runner (lemmatizer wrappers, SRS scoring, phrase bank logic)
+@vitest/ui                   # Optional browser UI for Vitest test results
+
+
+# ── WASM build toolchain (one-time local setup, not npm) ──────
+#
+# The Estonian morphological analyzer (Vabamorf) is compiled to WASM manually.
+# This is a one-time step — the compiled artifacts are committed to src/wasm/vabamorf/.
+# You do NOT need these to run the extension; only to rebuild the WASM binary.
+#
+#   Emscripten (emsdk)  — C++ to WASM compiler toolchain
+#     https://emscripten.org/docs/getting_started/downloads.html
+#
+#   Vabamorf (C++ source)
+#     https://github.com/Filosoft/vabamorf
+#
+# Build steps: see wasm-build/build.sh

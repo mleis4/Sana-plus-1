@@ -58,7 +58,7 @@ let voikkoInstance: any = null;
 async function getVoikko() {
   if (voikkoInstance) return voikkoInstance;
   // libvoikko-js ships its own WASM binary — import triggers WASM load
-  const { default: Libvoikko } = await import('libvoikko');
+  const { default: Libvoikko } = await import('../../wasm/voikko/libvoikko.js');
   voikkoInstance = await Libvoikko.init('fi');
   return voikkoInstance;
 }
